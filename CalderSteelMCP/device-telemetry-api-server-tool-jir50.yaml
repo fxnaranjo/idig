@@ -1,0 +1,60 @@
+kind: MCPTools
+apiVersion: api.ibm.com/v1
+metadata:
+  name: device-telemetry-api-server-tool-jir50
+  namespace: CalderSteelMCP
+  version: "1.0"
+  tags: []
+  description: Production-ready, highly-optimized API Server for retrieving device
+    sensor telemetry readings. Integrated with PostgreSQL, Spring Boot 3.3.4,
+    and Maven.
+  domain: mcp
+  labels:
+    api-spec: ./device-telemetry-api-server-spec.yml
+spec:
+  tools:
+    - name: getMetricsByDeviceId
+      description: Retrieves all telemetry records registered for a specific device
+        identifier, sorted from newest to oldest.
+      inputSchema:
+        type: object
+        properties:
+          deviceId:
+            description: The unique identifier of the device
+            x-parameter-location: path
+            type: string
+        required:
+          - deviceId
+      title: Get metrics by deviceId
+      x-api-binding:
+        operationPath: /metrics/device/{deviceId}
+        operationMethod: GET
+        api:
+          $path: ./device-telemetry-api-server-spec.yml
+    - name: getMetricsByType
+      description: Retrieves telemetry records matching a specific metric type, sorted
+        from newest to oldest. Requires a maximum limit parameter.
+      inputSchema:
+        type: object
+        properties:
+          type:
+            description: The type of metric to filter by (e.g. motor, gear, balance, cutter,
+              oven)
+            x-parameter-location: path
+            type: string
+          limit:
+            description: Maximum number of records to return (1-1000)
+            x-parameter-location: query
+            type: integer
+            maximum: 1000
+            minimum: 1
+            format: int32
+        required:
+          - type
+          - limit
+      title: Get metrics by type
+      x-api-binding:
+        operationPath: /metrics/type/{type}
+        operationMethod: GET
+        api:
+          $path: ./device-telemetry-api-server-spec.yml

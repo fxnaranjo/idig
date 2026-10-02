@@ -1,0 +1,24 @@
+kind: Invoke
+apiVersion: api.ibm.com/v1
+metadata:
+  name: invoke-jir50
+  namespace: CalderSteelMCP
+  version: "1.0"
+  tags: []
+  domain: mcp
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  endpoint:
+    http:
+      target:
+        tlsClientProfile: sample-tls-client-profile:1.0.0
+        url: "'https://devices-product-caldersteel-fxnorg.nanogw.apps.itz-ymik1h.infra0\
+          1-lb.wdc07.techzone.ibm.com/1.0/api/v1' & $pathAndQuery()"
+        urlType: jsonata
+        persistentConnections: false
+        timeout: 30
+        decompressResponse: true
+        followRedirects: false
+        chunkedUpload: false

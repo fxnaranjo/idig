@@ -1,0 +1,171 @@
+{
+  "nodes": [
+    {
+      "id": "4fb79ac9-282b-43ff-b326-9596f93a7725:0",
+      "projectId": "M09Wi5GK",
+      "filePath": "CalderSteelMCP/caldersteelmcp-freeflowpolicysequence-jir50.yaml",
+      "docIndex": 0,
+      "assetType": "resource",
+      "lastIndexed": 1790958669277,
+      "schemaVersion": 1,
+      "kind": "FreeFlowPolicySequence",
+      "name": "caldersteelmcp-freeflowpolicysequence-jir50",
+      "namespace": "CalderSteelMCP",
+      "version": "1.0",
+      "contentHash": "9a15e6ff350fcfbc"
+    },
+    {
+      "id": "66ae6d31-4f46-465c-924d-4913be00b783:0",
+      "projectId": "M09Wi5GK",
+      "filePath": "CalderSteelMCP/device-telemetry-api-server-spec.yml",
+      "docIndex": 0,
+      "assetType": "support",
+      "lastIndexed": 1790958667687,
+      "schemaVersion": 1
+    },
+    {
+      "id": "7059311d-d5bd-4803-91da-1d92b6c84077:0",
+      "projectId": "M09Wi5GK",
+      "filePath": "CalderSteelMCP/invoke-jir50.yaml",
+      "docIndex": 0,
+      "assetType": "resource",
+      "lastIndexed": 1790958668638,
+      "schemaVersion": 1,
+      "kind": "Invoke",
+      "name": "invoke-jir50",
+      "namespace": "CalderSteelMCP",
+      "version": "1.0",
+      "contentHash": "4c206e8ba19adcbc"
+    },
+    {
+      "id": "8cb4802b-8f44-4fc2-87c4-2f0ff37d153a:0",
+      "projectId": "M09Wi5GK",
+      "filePath": "CalderSteelMCP/telemetry-jir50.yaml",
+      "docIndex": 0,
+      "assetType": "resource",
+      "lastIndexed": 1790958668955,
+      "schemaVersion": 1,
+      "kind": "Telemetry",
+      "name": "telemetry-jir50",
+      "namespace": "CalderSteelMCP",
+      "version": "1.0",
+      "contentHash": "c108c0f46034f7c0"
+    },
+    {
+      "id": "b39c9c01-f662-4226-92d5-2636e9df90c2:0",
+      "projectId": "M09Wi5GK",
+      "filePath": "CalderSteelMCP/caldersteelmcp-quota-jir50.yaml",
+      "docIndex": 0,
+      "assetType": "resource",
+      "lastIndexed": 1790958669630,
+      "schemaVersion": 1,
+      "kind": "Quota",
+      "name": "caldersteelmcp-quota-jir50",
+      "namespace": "CalderSteelMCP",
+      "version": "1.0",
+      "contentHash": "826220d4ebe03367"
+    },
+    {
+      "id": "df22e67c-dc4a-4df2-ad55-d2cbfbc9e05d:0",
+      "projectId": "M09Wi5GK",
+      "filePath": "CalderSteelMCP/device-telemetry-api-server-tool-jir50.yaml",
+      "docIndex": 0,
+      "assetType": "resource",
+      "lastIndexed": 1790958669979,
+      "schemaVersion": 1,
+      "kind": "MCPTools",
+      "name": "device-telemetry-api-server-tool-jir50",
+      "namespace": "CalderSteelMCP",
+      "version": "1.0",
+      "contentHash": "1c98641342f6024e"
+    },
+    {
+      "id": "e76b0749-6b88-473e-8528-3218cd2304c9:0",
+      "projectId": "M09Wi5GK",
+      "filePath": "CalderSteelMCP/device-telemetry-api-server-server-jir50.yaml",
+      "docIndex": 0,
+      "assetType": "resource",
+      "lastIndexed": 1790958670311,
+      "schemaVersion": 1,
+      "kind": "MCPServer",
+      "name": "device-telemetry-api-server-server-jir50",
+      "namespace": "CalderSteelMCP",
+      "version": "1.0",
+      "contentHash": "a67224c10bd15907"
+    }
+  ],
+  "edges": [
+    {
+      "id": "0ec6d14e-838f-4430-a347-a8a0cf298ef3",
+      "projectId": "M09Wi5GK",
+      "sourceNodeId": "4fb79ac9-282b-43ff-b326-9596f93a7725:0",
+      "targetNodeId": "8cb4802b-8f44-4fc2-87c4-2f0ff37d153a:0",
+      "targetRefType": "same-project",
+      "targetRefString": "CalderSteelMCP:telemetry-jir50:1.0",
+      "targetRefKind": "resource",
+      "isValid": true,
+      "createdAt": 1790958669280,
+      "lastValidated": 1790958669280
+    },
+    {
+      "id": "48dd7b03-3544-42ff-ae2a-222c3d0b5bc4",
+      "projectId": "M09Wi5GK",
+      "sourceNodeId": "e76b0749-6b88-473e-8528-3218cd2304c9:0",
+      "targetNodeId": "b39c9c01-f662-4226-92d5-2636e9df90c2:0",
+      "targetRefType": "same-project",
+      "targetRefString": "CalderSteelMCP:caldersteelmcp-quota-jir50:1.0",
+      "targetRefKind": "resource",
+      "isValid": true,
+      "createdAt": 1790958670313,
+      "lastValidated": 1790958670313
+    },
+    {
+      "id": "672da28c-b3f9-4f1b-a1b3-c3838cdc32b7",
+      "projectId": "M09Wi5GK",
+      "sourceNodeId": "e76b0749-6b88-473e-8528-3218cd2304c9:0",
+      "targetNodeId": "df22e67c-dc4a-4df2-ad55-d2cbfbc9e05d:0",
+      "targetRefType": "same-project",
+      "targetRefString": "CalderSteelMCP:device-telemetry-api-server-tool-jir50:1.0",
+      "targetRefKind": "resource",
+      "isValid": true,
+      "createdAt": 1790958670313,
+      "lastValidated": 1790958670313
+    },
+    {
+      "id": "9216f616-d065-473b-ab96-eade5d3ed7d1",
+      "projectId": "M09Wi5GK",
+      "sourceNodeId": "df22e67c-dc4a-4df2-ad55-d2cbfbc9e05d:0",
+      "targetNodeId": "66ae6d31-4f46-465c-924d-4913be00b783:0",
+      "targetRefType": "same-project",
+      "targetRefString": "./device-telemetry-api-server-spec.yml",
+      "targetRefKind": "support",
+      "isValid": true,
+      "createdAt": 1790958669986,
+      "lastValidated": 1790958669986
+    },
+    {
+      "id": "ca288c94-4b85-4462-8bf0-a1768fbfbf58",
+      "projectId": "M09Wi5GK",
+      "sourceNodeId": "4fb79ac9-282b-43ff-b326-9596f93a7725:0",
+      "targetNodeId": "7059311d-d5bd-4803-91da-1d92b6c84077:0",
+      "targetRefType": "same-project",
+      "targetRefString": "CalderSteelMCP:invoke-jir50:1.0",
+      "targetRefKind": "resource",
+      "isValid": true,
+      "createdAt": 1790958669280,
+      "lastValidated": 1790958669280
+    },
+    {
+      "id": "d0b9c984-fec1-4ae1-be9f-43ce744545b4",
+      "projectId": "M09Wi5GK",
+      "sourceNodeId": "e76b0749-6b88-473e-8528-3218cd2304c9:0",
+      "targetNodeId": "4fb79ac9-282b-43ff-b326-9596f93a7725:0",
+      "targetRefType": "same-project",
+      "targetRefString": "CalderSteelMCP:caldersteelmcp-freeflowpolicysequence-jir50:1.0",
+      "targetRefKind": "resource",
+      "isValid": true,
+      "createdAt": 1790958670313,
+      "lastValidated": 1790958670313
+    }
+  ]
+}

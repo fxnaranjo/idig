@@ -1,0 +1,158 @@
+openapi: 3.0.1
+info:
+  title: Device Telemetry API Server
+  description: Production-ready, highly-optimized API Server for retrieving device
+    sensor telemetry readings. Integrated with PostgreSQL, Spring Boot 3.3.4,
+    and Maven.
+  version: 1.0.0
+  x-ibm-name: device_telemetry_api_server
+servers:
+  - url: https://devices-product-caldersteel-fxnorg.nanogw.apps.itz-ymik1h.infra01-lb.wdc07.techzone.ibm.com/1.0/api/v1
+    description: Generated server url
+tags:
+  - name: Telemetry API
+    description: Operations for retrieving device sensor readings and metrics.
+paths:
+  /metrics/type/{type}:
+    get:
+      tags:
+        - Telemetry API
+      summary: Get metrics by type
+      description: Retrieves telemetry records matching a specific metric type, sorted
+        from newest to oldest. Requires a maximum limit parameter.
+      operationId: getMetricsByType
+      parameters:
+        - name: type
+          in: path
+          description: The type of metric to filter by (e.g. motor, gear, balance, cutter,
+            oven)
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of records to return (1-1000)
+          required: true
+          schema:
+            maximum: 1000
+            minimum: 1
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Successfully retrieved telemetry metrics object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/MetricsResponse"
+        "400":
+          description: Invalid type or limit parameter supplied
+        "500":
+          description: Internal server database error
+  /metrics/range:
+    get:
+      tags:
+        - Telemetry API
+      summary: Get metrics in date/timestamp range
+      description: Retrieves telemetry records recorded between two timestamps
+        (inclusive), sorted from newest to oldest. Requires a maximum limit
+        parameter.
+      operationId: getMetricsByRange
+      parameters:
+        - name: start
+          in: query
+          description: Start timestamp (ISO-8601 string, e.g. 2026-09-24T00:00:00Z)
+          required: true
+          schema:
+            type: string
+        - name: end
+          in: query
+          description: End timestamp (ISO-8601 string, e.g. 2026-09-24T23:59:59Z)
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of records to return (1-1000)
+          required: true
+          schema:
+            maximum: 1000
+            minimum: 1
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Successfully retrieved telemetry metrics object within the
+            specified range
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/MetricsResponse"
+        "400":
+          description: Invalid dates or limit parameter supplied
+        "500":
+          description: Internal server database error
+  /metrics/device/{deviceId}:
+    get:
+      tags:
+        - Telemetry API
+      summary: Get metrics by deviceId
+      description: Retrieves all telemetry records registered for a specific device
+        identifier, sorted from newest to oldest.
+      operationId: getMetricsByDeviceId
+      parameters:
+        - name: deviceId
+          in: path
+          description: The unique identifier of the device
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successfully retrieved telemetry metrics object for the device
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/MetricsResponse"
+        "400":
+          description: Invalid device ID supplied
+        "500":
+          description: Internal server database error
+components:
+  schemas:
+    MetricsResponse:
+      type: object
+      properties:
+        metrics:
+          type: array
+          description: List of sensor readings matching the query criteria
+          items:
+            $ref: "#/components/schemas/SensorReading"
+      description: Response wrapper encapsulating a collection of sensor metrics.
+    SensorReading:
+      type: object
+      properties:
+        deviceId:
+          type: string
+        type:
+          type: string
+        timestamp:
+          type: string
+        vibration:
+          type: string
+        temperature:
+          type: string
+        pressure:
+          type: string
+        cycleCount:
+          type: string
+        humidity:
+          type: string
+      description: List of sensor readings matching the query criteria
+x-ibm-configuration:
+  phase: realized
+  enforced: true
+  testable: true
+x-ibm-endpoints:
+  - url: https://devices-product-caldersteel-fxnorg.nanogw.apps.itz-ymik1h.infra01-lb.wdc07.techzone.ibm.com/1.0/api/v1
+    description: Generated server url

@@ -1,0 +1,16 @@
+kind: FreeFlowPolicySequence
+apiVersion: api.ibm.com/v1
+metadata:
+  name: caldersteelmcp-freeflowpolicysequence-jir50
+  namespace: CalderSteelMCP
+  version: "1.0"
+  tags: []
+  domain: mcp
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  main:
+    - $ref: CalderSteelMCP:invoke-jir50:1.0
+  monitoring:
+    $ref: CalderSteelMCP:telemetry-jir50:1.0
